@@ -39,7 +39,7 @@ var Qlinqo = {'foregroundLayer':null
 			, 'addStats': false
 			, 'pointTextObject': null
 			, 'currentPlayerPoints': 0
-			, 'ballsLeft': 5
+			, 'ballsLeft': 1
 			, 'ballsScored':0};
 
 Qlinqo.Setup = function (playfieldLayer, foregroundLayer, backgroundLayer, debugLayer, statusLayer, gameOverLayer) {
@@ -305,7 +305,7 @@ Qlinqo.Setup = function (playfieldLayer, foregroundLayer, backgroundLayer, debug
 	fixDef.friction = 5.0;
 	fixDef.restitution = 0.2;
 
-	var pointValues = ["Shirt", "Notes", "MousePad", "EarBuds", "Towel", "Shirt", "Towel", "Case", "Holder", "Clip", "Shirt"];
+	var pointValues = ["EarBuds", "Shirt", "Grand Prize", "Holder & EarBuds", "Holder", "EarBuds & Towel", "EarBuds", "Towel", "Shirt & Towel", "Holder", "Shirt & Earbuds"];
 	for(var col = 0; col < cols + 1; col++) {
 		fixDef.shape = new b2PolygonShape;
 		fixDef.shape.SetAsBox( xDist/2, 0.05 );
@@ -391,13 +391,13 @@ Qlinqo.fadePegs = function() {
 };
 
 Qlinqo.startOver = function() {
-	Qlinqo.currentPlayerPoints = 0;
-	Qlinqo.ballsLeft = 5;
+	Qlinqo.currentPlayerPoints = "";
+	Qlinqo.ballsLeft = 1;
 	Qlinqo.ballsScored = 0;
 	Qlinqo.pointTextObject.layer.needsDisplay = true;
-	Qlinqo.statusLayer.needsDisplay = true;
+	Qlinqo.statusLayer.needsDisplay = false;
 
-	Qlinqo.pointTextObject.text = 0;
+	Qlinqo.pointTextObject.text = "";
 	//setup our status object for current points and balls left
 	for(var i = Qlinqo.ballsLeft - 1; i >= 0; i--)
 	{
@@ -421,7 +421,7 @@ Qlinqo.update = function() {
 
 			Qlinqo.ballsScored++;
 			//check for end of game
-			if(Qlinqo.ballsScored == 5) {
+			if(Qlinqo.ballsScored == 1) {
 				//start fireworks if we had enough points
 				var pointMsg = "Try Again!";
 				var fwLength = Qlinqo.currentPlayerPoints / 5000;
@@ -680,10 +680,10 @@ Qlinqo.PointValueText = Stratiscape.DrawnObject.extend({ //PointValueText drawn 
 
 		ctx.fillStyle = '#FFF';
 		ctx.strokeStyle = '#EEE'
-		ctx.font = "bolder 20px Trebuchet MS,Tahoma,Verdana,Arial,sans-serif";
+		ctx.font = "bolder 12px Trebuchet MS,Tahoma,Verdana,Arial,sans-serif";
 		ctx.textAlign = "center";
 		ctx.textBaseline = 'middle';
-		var textHeight = 16;
+		var textHeight = 12;
 		for(var i = this.text.length-1; i >= 0; i--)
 			ctx.fillText(this.text.charAt(i), this.x, this.y - (textHeight * (this.text.length-1-i)));
 

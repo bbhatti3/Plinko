@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Qlinqo - HTML5 Game</title>
+<title>Plinko - HTML5 Game</title>
 <script type="text/javascript" src="Box2dWeb-2.1.a.3.min.js"></script>
 <script type="text/javascript" src="js-inherit.js"></script>
 <script type="text/javascript" src="Stratiscape.js"></script>
@@ -19,7 +19,7 @@ function qlinqoPlayAreaClicked(pos) {
 }
 
 function qlinqoGameOverClicked(pos) {
-	if(Qlinqo.ballsScored == 5) {
+	if(Qlinqo.ballsScored == 1) {
 		FW.StopRandomBlasts();
 		Qlinqo.gameOverLayer.children[0].fadeAway();
 		Qlinqo.startOver();
@@ -201,7 +201,7 @@ a:focus, a:hover, a:active { outline:none }
 		<div id="canvasMouseHitDetector" style="position: relative;width:480px;height:80px;z-Index:20;background-color:green;opacity:0;"></div>
 		<div id="canvasGameOverHitDetector" style="position: absolute;top:240px;left:180px;width:120px;height:160px;z-Index:21;background-color:green;opacity:0;"></div>
 	</div>
-	
+
 	</div>
 </body>
 </html>
